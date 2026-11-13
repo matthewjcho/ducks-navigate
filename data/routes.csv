@@ -1,15 +1,15 @@
-start	end	distance(ft)
-Howe	Howe Circle	78.26
-Howe Circle	Fountain	143.64
-Howe Circle	Library Front	256.58
-Howe Circle	UCC+2011	348.89
-Library Front	Library	80.56
-Library Front	UCC+2011	131.41
-UCC+2011	UCC+Schaeffer	98.79
-UCC+Schaeffer	UCC	83.32
-UCC+Schaeffer	Witpenn+6th	507.78
-Witpenn+6th	River+6th	189.9
-Witpenn+6th	Babbio	109.21
-Babbio	River+6th	111.5
-River+6th	Peirce+Morton	91.35
-River+6th	Gateway	175.86
+route_id,start_node_id,end_node_id,start_name,end_name,distance_ft,directionality,verification_status,source_type,source_url,notes
+R001,HOWE,WP_HOWE_CIRCLE,Howe,Howe Circle,78.26,unknown,unverified_existing_repository_route,existing_repository_csv,https://github.com/matthewjcho/ducks-navigate/blob/main/data/routes.csv,"Legacy edge; directions, footpath geometry and actual entrance linkage not verified."
+R002,WP_HOWE_CIRCLE,WP_FOUNTAIN,Howe Circle,Fountain,143.64,unknown,unverified_existing_repository_route,existing_repository_csv,https://github.com/matthewjcho/ducks-navigate/blob/main/data/routes.csv,"Legacy edge; directions, footpath geometry and actual entrance linkage not verified."
+R003,WP_HOWE_CIRCLE,WP_LIBRARY_FRONT,Howe Circle,Library Front,256.58,unknown,unverified_existing_repository_route,existing_repository_csv,https://github.com/matthewjcho/ducks-navigate/blob/main/data/routes.csv,"Legacy edge; directions, footpath geometry and actual entrance linkage not verified."
+R004,WP_HOWE_CIRCLE,WP_UCC_2011,Howe Circle,UCC+2011,348.89,unknown,unverified_existing_repository_route,existing_repository_csv,https://github.com/matthewjcho/ducks-navigate/blob/main/data/routes.csv,"Legacy edge; directions, footpath geometry and actual entrance linkage not verified."
+R005,WP_LIBRARY_FRONT,LIBRARY,Library Front,Library,80.56,unknown,unverified_existing_repository_route,existing_repository_csv,https://github.com/matthewjcho/ducks-navigate/blob/main/data/routes.csv,"Legacy edge; directions, footpath geometry and actual entrance linkage not verified."
+R006,WP_LIBRARY_FRONT,WP_UCC_2011,Library Front,UCC+2011,131.41,unknown,unverified_existing_repository_route,existing_repository_csv,https://github.com/matthewjcho/ducks-navigate/blob/main/data/routes.csv,"Legacy edge; directions, footpath geometry and actual entrance linkage not verified."
+R007,WP_UCC_2011,WP_UCC_SCHAEFFER,UCC+2011,UCC+Schaeffer,98.79,unknown,unverified_existing_repository_route,existing_repository_csv,https://github.com/matthewjcho/ducks-navigate/blob/main/data/routes.csv,"Legacy edge; directions, footpath geometry and actual entrance linkage not verified."
+R008,WP_UCC_SCHAEFFER,UCC,UCC+Schaeffer,UCC,83.32,unknown,unverified_existing_repository_route,existing_repository_csv,https://github.com/matthewjcho/ducks-navigate/blob/main/data/routes.csv,"Legacy edge; directions, footpath geometry and actual entrance linkage not verified."
+R009,WP_UCC_SCHAEFFER,WP_WITPENN_6TH,UCC+Schaeffer,Witpenn+6th,507.78,unknown,unverified_existing_repository_route,existing_repository_csv,https://github.com/matthewjcho/ducks-navigate/blob/main/data/routes.csv,"Legacy edge; directions, footpath geometry and actual entrance linkage not verified."
+R010,WP_WITPENN_6TH,WP_RIVER_6TH,Witpenn+6th,River+6th,189.9,unknown,unverified_existing_repository_route,existing_repository_csv,https://github.com/matthewjcho/ducks-navigate/blob/main/data/routes.csv,"Legacy edge; directions, footpath geometry and actual entrance linkage not verified."
+R011,WP_WITPENN_6TH,BABBIO,Witpenn+6th,Babbio,109.21,unknown,unverified_existing_repository_route,existing_repository_csv,https://github.com/matthewjcho/ducks-navigate/blob/main/data/routes.csv,"Legacy edge; directions, footpath geometry and actual entrance linkage not verified."
+R012,BABBIO,WP_RIVER_6TH,Babbio,River+6th,111.5,unknown,unverified_existing_repository_route,existing_repository_csv,https://github.com/matthewjcho/ducks-navigate/blob/main/data/routes.csv,"Legacy edge; directions, footpath geometry and actual entrance linkage not verified."
+R013,WP_RIVER_6TH,WP_PEIRCE_MORTON,River+6th,Peirce+Morton,91.35,unknown,unverified_existing_repository_route,existing_repository_csv,https://github.com/matthewjcho/ducks-navigate/blob/main/data/routes.csv,"Legacy edge; directions, footpath geometry and actual entrance linkage not verified."
+R014,WP_RIVER_6TH,GATEWAY,River+6th,Gateway,175.86,unknown,unverified_existing_repository_route,existing_repository_csv,https://github.com/matthewjcho/ducks-navigate/blob/main/data/routes.csv,"Legacy edge; directions, footpath geometry and actual entrance linkage not verified."

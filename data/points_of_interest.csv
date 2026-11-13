@@ -1,0 +1,2 @@
+poi_id,building_id,name,category,level,latitude,longitude,source_type,source_url,verification_status,notes
+PIERCE_CAFE,HOWE,Pierce Cafe,dining,2,,,official_stevens_website,https://www.stevens.edu/page-basic/welcome-alumni-and-friends,building_and_floor_verified_coordinates_not_applicable,"Pierce Cafe is in Wesley J. Howe Center second-floor lobby. Route outdoors to a verified Howe entrance, then provide indoor instructions."
