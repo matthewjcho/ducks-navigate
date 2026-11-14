@@ -26,6 +26,13 @@ STEVENS_CENTER = (40.7443, -74.0255)  # middle of campus
 MAP_ZOOM = 17
 FEET_PER_METER = 3.28084
 
+# Typical walking speeds in feet per second, used for the time estimate
+WALKING_SPEEDS = {
+    "Slow": 3.0,     # about 2 mph (relaxed pace or using a mobility aid)
+    "Normal": 4.4,   # about 3 mph (average walking pace)
+    "Fast": 5.9,     # about 4 mph (brisk walk)
+}
+
 
 @st.cache_resource
 def load_campus():
@@ -40,6 +47,15 @@ def format_distance(distance_ft, unit):
     return f"{distance_ft:,.0f} ft"
 
 
+def format_walk_time(distance_ft, speed_label):
+    """Estimate walking time for a distance at the chosen speed."""
+    seconds = distance_ft / WALKING_SPEEDS[speed_label]
+    minutes = round(seconds / 60)
+    if minutes < 1:
+        return "less than 1 min"
+    return f"about {minutes} min"
+
+
 def show_header():
     """Display the title and how-to-use instructions."""
     st.title("🦆 Ducks Navigate!")
@@ -48,7 +64,8 @@ def show_header():
         st.markdown(
             "1. Choose a **start** and **destination** in the sidebar.\n"
             "2. Click **Find Route** to draw the path on the map.\n"
-            "3. Switch **units** or toggle **Show all campus points** anytime.\n"
+            "3. Switch **units**, set your **walking speed**, or toggle "
+            "**Show all campus points** anytime.\n"
             "4. Click **Clear** to reset and try another route."
         )
 
@@ -67,12 +84,16 @@ def show_sidebar(destinations):
     unit = st.sidebar.radio("Distance units", ["Feet", "Meters"], horizontal=True)
     show_all = st.sidebar.toggle("Show all campus points", value=True)
 
-    # Elements 5-6: action buttons
+    # Element 5: walking speed for the time estimate
+    speed = st.sidebar.select_slider("Walking speed", options=list(WALKING_SPEEDS),
+                                     value="Normal")
+
+    # Elements 6-7: action buttons
     col1, col2 = st.sidebar.columns(2)
     find = col1.button("Find Route", type="primary", use_container_width=True)
     clear = col2.button("Clear", use_container_width=True)
 
-    return start, end, unit, show_all, find, clear
+    return start, end, unit, show_all, speed, find, clear
 
 
 def build_map(locations, path, show_all):
@@ -115,11 +136,13 @@ def build_map(locations, path, show_all):
     return campus_map
 
 
-def show_directions(locations, path, distance_ft, unit):
-    """Show the route summary and numbered steps."""
+def show_directions(locations, path, distance_ft, unit, speed):
+    """Show the route summary, walking time, and numbered steps."""
     names = [locations[node_id]["name"] for node_id in path]
     st.success(f"**Route:** {' → '.join(names)}  \n"
-               f"**Total distance:** {format_distance(distance_ft, unit)}")
+               f"**Total distance:** {format_distance(distance_ft, unit)}  \n"
+               f"**Walking time:** {format_walk_time(distance_ft, speed)} "
+               f"({speed.lower()} pace)")
     st.markdown("\n".join(f"{step}. {name}" for step, name in enumerate(names, start=1)))
 
 
@@ -130,7 +153,7 @@ def main():
 
     campus = load_campus()
     locations = campus.get_locations()
-    start, end, unit, show_all, find, clear = show_sidebar(campus.get_destinations())
+    start, end, unit, show_all, speed, find, clear = show_sidebar(campus.get_destinations())
 
     if clear:
         st.session_state.pop("route", None)
@@ -153,7 +176,7 @@ def main():
                   use_container_width=True, returned_objects=[])
     with info_col:
         if path:
-            show_directions(locations, path, distance_ft, unit)
+            show_directions(locations, path, distance_ft, unit, speed)
         else:
             st.info("Pick a start and destination, then click **Find Route**.")
 
